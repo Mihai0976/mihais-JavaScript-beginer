@@ -13,7 +13,7 @@ btns.forEach(function (btn) {
         if (styles.contains('decrease')) {
             count--;
         } else if (styles.contains('increase')) {
-            btn.style.color = "green";
+            
             count++;
         } else {
             count = 0;
@@ -22,14 +22,19 @@ btns.forEach(function (btn) {
         //change color of counter and btn depending on counter's value
         if (count > 0) {
             value.style.color = "green";
+
             if (count < 0) {
                 btn.style.color = "red";
+            }else if (count>0) {
+                btn.style.color = "green";
             }
 
         } else if (count < 0) {
             value.style.color = "red";
-            btn.style.color = "red";
-            if (count > 0) {
+            
+            if (count < 0) {
+                btn.style.color = "red";
+            }else if (count>0) {
                 btn.style.color = "green";
             }
         } else if (count === 0) {
