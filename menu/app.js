@@ -117,7 +117,7 @@ function displatMenuItems(menuItems) {
   sectionCenter.innerHTML = displayMenu;
 };
 
-//display buttons
+//display buttons dinamicaly
 function displayMenuButtons() {
   const categories = menu.reduce(function (values, item) {
     if (!values.includes(item.category)) {
@@ -131,3 +131,26 @@ function displayMenuButtons() {
   }).join("");
   container.innerHTML = categoryBtns;
 };
+
+//select the buttons
+function selectButtons() {
+  
+  const filterBtns = container.querySelectorAll(".filter-btn");
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      const category = e.currentTarget.dataset.id;
+      const menuCategory = menu.filter(function (menuItem) {
+        if (menuItem.category === category) {
+          return menuItem;
+        };
+      });
+      if (category === 'All') {
+        displatMenuItems(menu);
+      } else {
+        displatMenuItems(menuCategory);
+      };
+    });
+  });
+  
+}
